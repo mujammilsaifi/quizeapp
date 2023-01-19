@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock %}
+
+{% block content %}
+<h3>Home Page</h3>
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}">Logout</a> 
+{% endif %}
+<hr>
+<h4> you want to attempt the quiz select the category</h4>
+<hr>
+<pre>
+    <h3> some basic instructions here </h3>
+    The HTML and PDF versions contain:
+    a non-exhaustive alphabetical keyword index;
+    an index dedicated to computer-implemented inventions (CII), with a collection of direct hyperlinks to the relevant chapters in the Guidelines;
+    a full list of the sections which have been amended, together with the corresponding hyperlinks.
+    Please use our advanced search to search within full-text HTML versions of EPO legal texts. You can limit your search to one or more of these texts.
+    Important notice: The March 2022 edition of the Guidelines is the only valid official version, and supersedes the March 2021 edition as from 1 March 2022.
+</pre>
+{% endblock %} 

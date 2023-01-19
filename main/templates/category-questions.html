@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% block title %}category-question{% endblock %}
+
+{% block content %}
+<h2 class="my-4">Category :<span class="text-primary">{{category.title}}</span></h2>
+
+
+<div class="card border-dark shadow">
+  <h4 class="card-header border-dark">{{question.question}}? <spAn class="timer float-end">time</spAn></h4>
+  <form method="post" action="{% url 'submit_answer' category.id question.id %} ">
+    {% csrf_token %}
+    <div class="card-body">
+      <table class="table table-border">
+        <tr>
+          <td><input name="option" value="{{question.opt_1}}" id="option_1" type="radio"></td>
+          <th><label for="option_1">{{question.opt_1}}</label></th>
+        </tr>
+        <tr>
+          <td><input name="option" value="{{question.opt_2}}" id="option_2" type="radio"></td>
+          <th><label for="option_2"> {{question.opt_2}}</label></th>
+        </tr>
+        <tr>
+          <td><input name="option" value="{{question.opt_3}}" id="option_3" type="radio"></td>
+          <th><label for="option_3">{{question.opt_3}}</label></th>
+        </tr>
+        <tr>
+          <td><input name="option" value="{{question.opt_4}}" id="option_4" type="radio"></td>
+          <th><label for="option_4"> {{question.opt_4}}</label></th>
+        </tr>
+      </table>
+    </div>
+    <div class="card-footer">
+      <input type="submit" name="skip" value="skip" class="btn btn-primary skipBtn">
+      <input type="submit" name="submit" class="btn btn-primary submitBtn">
+    </div>
+  </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+      $(document).ready(function(){
+        $(".submitBtn").on('click',function(){
+          var _checked=$("input[name='option']:checked").val();
+          if (_checked ==undefined){
+            alert("please select the option");
+            return false;
+          }
+        });
+      });
+</script>
+
+{% endblock %}

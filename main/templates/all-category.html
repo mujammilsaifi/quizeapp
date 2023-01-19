@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}all-category-page{% endblock %}
+<!-- {% url 'category-questions' category.cat_id %} -->
+{% block content %}
+<h3 class="my-4">All Category</h3>
+<div class="row">
+    {% for category in data %}
+    <div class="col-md-4">
+        <a href="/category-questions/{{category.id}}"><img src="/media/{{category.image}}" alt="{{category.title}}" class="card-img-top"></a>
+        <div class="card-header">
+            <a href="/category-questions/{{category.id}}"><h4>{{category.title}}</h4> </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+ 
+{% endblock %} 

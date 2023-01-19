@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% block title %}category-question{% endblock %}
+
+{% block content %}
+<h2 class="my-4">Result Attempt Question</h2>
+<table class="table table-border">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Question</th>            
+            <th>Right Answer</th>
+            <th>Submitted Answer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in result %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.question}}</td>
+            <td>{{row.question.right_opt}}</td>
+            {% if row.question.right_opt == row.right_opt %}
+            <td class="text-success">{{row.right_opt}}</td>
+            {% else %}
+            <td class="text-danger">{{row.right_opt}}</td>
+            {% endif %}
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+<h2 class="my-4">Result Details</h2>
+<table class="table table-border">
+    <tr>
+        <th>Total Skiped Question</th>
+        <td>{{skiped}}</td>
+    </tr>   
+    <tr>
+        <th>Total Attempt Question</th>
+        <td>{{attempt}}</td>
+    </tr>   
+    <tr>
+        <th>Total Right Answer</th>
+        <td>{{rightans}}</td>
+    </tr>   
+    <tr>
+        <th>Percentage</th>
+        <td>{{percentage}} %</td>
+    </tr>  
+</table>
+
+
+
+{% endblock %}
